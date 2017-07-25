@@ -1,9 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.umar.fragment_tab.addNewContacts">
+    tools:context="com.example.umar.fragment_tab.addNewContacts"
+    android:padding="16dp">
 
-</android.support.constraint.ConstraintLayout>
+
+
+
+
+
+    <ImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/imageView_picture"
+        android:onClick="onImageClick"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/phone_book"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+
+        android:id="@+id/txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="100dp"
+        android:text="Name"
+        android:textSize="20sp"
+        android:layout_below="@+id/imageView_picture"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="24dp" />
+
+    <EditText
+        android:id="@+id/editText_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txt_name"
+        android:layout_alignBottom="@+id/txt_name"
+
+        android:layout_alignLeft="@+id/imageView_picture"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/imageView_picture"
+        android:focusedByDefault="true"
+        android:hint="Enter Your Name"
+        android:inputType="textCapWords|textPersonName" />
+
+    <TextView
+        android:id="@+id/txt_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="100dp"
+        android:text="Phone #"
+        android:textSize="20sp"
+        android:layout_below="@+id/editText_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/editText_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txt_phone"
+        android:layout_alignLeft="@+id/editText_name"
+        android:layout_alignStart="@+id/editText_name"
+        android:capitalize="words"
+        android:hint="Enter Phone Number"
+        android:imeOptions="actionGo"
+        android:inputType="phone"
+        android:text=""
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/button_save"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText_phone"
+        android:layout_alignStart="@+id/editText_phone"
+        android:layout_below="@+id/txt_phone"
+        android:layout_marginTop="50dp"
+        android:elevation="16dp"
+        android:onClick="setSaveButton"
+
+
+        android:text="Save Contact" />
+
+
+</RelativeLayout>
