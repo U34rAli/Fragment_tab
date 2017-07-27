@@ -15,21 +15,16 @@ import static android.R.drawable.btn_star_big_off;
 import static android.R.drawable.btn_star_big_on;
 
 public class ShowContactINFO extends AppCompatActivity {
-
     Contact info = null;
     ImageView imageView_image;
     ImageView imageView_favourite;
     int favourite = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_contact_info);
-
         imageView_image = (ImageView) findViewById(R.id.imageView_info);
         imageView_favourite = (ImageView) findViewById(R.id.imageView_favourite);
-
-
         int index = -1;
         if (getIntent() != null) {
             index = getIntent().getIntExtra("index", -1);
@@ -45,7 +40,6 @@ public class ShowContactINFO extends AppCompatActivity {
                 imageView_favourite.setImageResource(btn_star_big_on);
             }
         }
-
         imageView_favourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,17 +59,13 @@ public class ShowContactINFO extends AppCompatActivity {
                 }
             }
         });
-
-
     }
-
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         this.finish();
     }
-
     private void loadImage(String path) {
         File imgFile = new File(path);
         if (imgFile.exists()) {

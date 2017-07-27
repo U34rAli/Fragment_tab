@@ -31,7 +31,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class addNewContacts extends AppCompatActivity {
-
     ImageView iv;
     EditText name;
     EditText phone;
@@ -40,9 +39,7 @@ public class addNewContacts extends AppCompatActivity {
     String photoPath = "";
     byte[] image_bytes = null;
     Bitmap image_bitmap = null;
-
     private static final int SELECTED_PICTURE = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +49,7 @@ public class addNewContacts extends AppCompatActivity {
         phone = (EditText) findViewById(R.id.editText_phone);
         saveButton = (Button) findViewById(R.id.button_save);
 //        backBtn = (ImageButton) findViewById(R.id.backBtn);
-
     }
-
 
     public void onImageClick(View view) {
         Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -69,13 +64,9 @@ public class addNewContacts extends AppCompatActivity {
             try {
                 final Uri imageUri = data.getData();
                 photoPath = getImagePath(imageUri);
-
                 final InputStream imageStream = getContentResolver().openInputStream(imageUri);
                 final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-
-
                 image_bitmap = getResizedBitmap(selectedImage, 100, 100);
-
                 iv.setImageBitmap(image_bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -102,20 +93,15 @@ public class addNewContacts extends AppCompatActivity {
         } else {
             nameString = name.getText().toString();
         }
-
         if (phone.getText().toString().length() == 0) {
             Toast.makeText(addNewContacts.this, R.string.PhoneNumberNotPresent, Toast.LENGTH_SHORT).show();
         } else {
-
             if (contactPresentOrNot(phone.getText().toString())) {
                 showAlertDialog(getResources().getString(R.string.NumberPresent), view);
                 //Toast.makeText(AddContactActivity.this, R.string.NumberPresent, Toast.LENGTH_SHORT).show();
             } else {
-
                 //Toast.makeText(AddContactActivity.this, R.string.contactSaved, Toast.LENGTH_SHORT).show();
-
                 image_bytes = imageViewToByte(iv);
-
                 tab1_fragment.myBD.insertContact(photoPath, nameString, phone.getText().toString(), image_bytes);
                 tab1_fragment.contacts.add(new Contact(photoPath, nameString, phone.getText().toString(), image_bytes));
                 showAlertDialog(getResources().getString(R.string.contactSaved), view);
@@ -140,7 +126,6 @@ public class addNewContacts extends AppCompatActivity {
     private Boolean contactPresentOrNot(String phoneNumber) {
         int i = 0;
         while (i != tab1_fragment.contacts.size()) {
-
             if (tab1_fragment.contacts.get(i).isEqual(phoneNumber)) {
                 return true;
             }
@@ -189,13 +174,10 @@ public class addNewContacts extends AppCompatActivity {
         Matrix matrix = new Matrix();
         // RESIZE THE BIT MAP
         matrix.postScale(scaleWidth, scaleHeight);
-
         // "RECREATE" THE NEW BITMAP
         Bitmap resizedBitmap = Bitmap.createBitmap(
                 bm, 0, 0, width, height, matrix, false);
         bm.recycle();
-
-
         return getCircularBitmap(resizedBitmap);
     }
 
