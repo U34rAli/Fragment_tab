@@ -31,9 +31,14 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class addNewContacts extends AppCompatActivity {
+
+
     ImageView iv;
     EditText name;
     EditText phone;
+    EditText email;
+    EditText address;
+
     Button saveButton;
     ImageButton backBtn;
     String photoPath = "";
@@ -47,6 +52,9 @@ public class addNewContacts extends AppCompatActivity {
         iv = (ImageView) findViewById(R.id.imageView_picture);
         name = (EditText) findViewById(R.id.editText_name);
         phone = (EditText) findViewById(R.id.editText_phone);
+        email = (EditText)findViewById(R.id.contact_email);
+        address = (EditText)findViewById(R.id.contact_address);
+
         saveButton = (Button) findViewById(R.id.button_save);
 //        backBtn = (ImageButton) findViewById(R.id.backBtn);
     }
@@ -100,10 +108,10 @@ public class addNewContacts extends AppCompatActivity {
                 showAlertDialog(getResources().getString(R.string.NumberPresent), view);
                 //Toast.makeText(AddContactActivity.this, R.string.NumberPresent, Toast.LENGTH_SHORT).show();
             } else {
-                //Toast.makeText(AddContactActivity.this, R.string.contactSaved, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext() , email.getText() , Toast.LENGTH_SHORT).show();
                 image_bytes = imageViewToByte(iv);
-                tab1_fragment.myBD.insertContact(photoPath, nameString, phone.getText().toString(), image_bytes);
-                tab1_fragment.contacts.add(new Contact(photoPath, nameString, phone.getText().toString(), image_bytes));
+                tab1_fragment.myBD.insertContact(photoPath, nameString, phone.getText().toString(), image_bytes , email.getText().toString() , address.getText().toString());
+                tab1_fragment.contacts.add(new Contact(photoPath, nameString, phone.getText().toString(), image_bytes , email.getText().toString() , address.getText().toString()));
                 showAlertDialog(getResources().getString(R.string.contactSaved), view);
             }
         }
@@ -137,6 +145,8 @@ public class addNewContacts extends AppCompatActivity {
     public void showAlertDialog(String message, View view) {
         name.setText("");
         phone.setText("");
+        email.setText("");
+        address.setText("");
         iv.setImageResource(R.drawable.phone_book);
         showSnactBar(view, message);
 //        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -161,7 +171,7 @@ public class addNewContacts extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Toast.makeText(getApplicationContext(), "You have clicked on Back", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "You have clicked on Back", Toast.LENGTH_SHORT).show();
     }
 
 

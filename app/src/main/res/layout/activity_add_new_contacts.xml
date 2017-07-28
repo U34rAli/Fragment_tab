@@ -17,14 +17,13 @@
         android:src="@drawable/phone_book" />
 
     <EditText
-        android:layout_marginTop="10dp"
         android:id="@+id/editText_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:focusedByDefault="true"
         android:hint="Enter Your Name:"
-        android:inputType="textCapWords|textPersonName"
- />
+        android:inputType="textCapWords|textPersonName" />
 
     <EditText
         android:id="@+id/editText_phone"
@@ -37,11 +36,13 @@
         android:textAllCaps="false" />
     <EditText
         android:id="@+id/contact_email"
+        android:inputType="textCapWords|textPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email Address:"
         />
     <EditText
+        android:inputType="textCapWords|textPersonName"
         android:id="@+id/contact_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
