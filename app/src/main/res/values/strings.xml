@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Contact App</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="DefaultUserName">UnKnown</string>
+    <string name="PhoneNumberNotPresent">Phone Number is necessary</string>
+    <string name="ImageNotSelected">You haven\'t picked Image</string>
+    <string name="errorWhileFectcingImage">Something went wrong</string>
+    <string name="contactSaved">Contact Saved Successfully</string>
+    <string name="NumberPresent">Phone Number Already Exist</string>
+    <string name="alertbox">Alert Dialog</string>
+</resources>

@@ -19,7 +19,8 @@
                 app:srcCompat="@color/colorPrimaryDark"
                 tools:layout_editor_absoluteY="81dp"
                 tools:layout_editor_absoluteX="8dp"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"/>
             <ImageView
                 android:layout_alignBottom="@+id/imageView_info"
                 android:layout_alignRight="@+id/imageView_info"

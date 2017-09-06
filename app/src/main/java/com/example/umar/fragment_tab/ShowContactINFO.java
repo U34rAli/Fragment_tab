@@ -18,6 +18,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.io.File;
 import java.util.NoSuchElementException;
 
@@ -30,7 +33,7 @@ public class ShowContactINFO extends AppCompatActivity {
     ImageView imageView_favourite;
     EditText info_name , info_phone , info_email , info_address;
     Button info_save_button;
-
+    int index = -1;
 
     int favourite = 0;
     @Override
@@ -47,18 +50,11 @@ public class ShowContactINFO extends AppCompatActivity {
         info_save_button = (Button)findViewById(R.id.button_info_save);
 
 
-
         info_phone.setEnabled(false);
 
-        info_save_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view , "Data Saved" , Snackbar.LENGTH_SHORT).show();
-            }
-        });
 
 
-        int index = -1;
+
         if (getIntent() != null) {
             index = getIntent().getIntExtra("index", -1);
         }
@@ -101,6 +97,20 @@ public class ShowContactINFO extends AppCompatActivity {
                 }
             }
         });
+
+
+        info_save_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                tab1_fragment.myBD.updateContact();
+                tab1_fragment.contacts.get(index).setEmail(info_email.getText().toString());
+                tab1_fragment.contacts.get(index).setName(info_name.getText().toString());
+                tab1_fragment.contacts.get(index).setAddress(info_address.getText().toString());
+//                tab1_fragment.contacts.get(index).setEmail(info_email.getText().toString());
+                Snackbar.make(view , "Data Saved" , Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
@@ -113,7 +123,9 @@ public class ShowContactINFO extends AppCompatActivity {
         if (imgFile.exists()) {
 //            Toast.makeText(mContext, " " + path, Toast.LENGTH_SHORT).show();
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-            imageView_image.setImageBitmap(myBitmap);
+           // Glide.with(this).load(myBitmap).into(imageView_image);
+            Glide.with(this).load(path).into(imageView_image);
+//            imageView_image.setImageBitmap(myBitmap);
         }
     }
 
